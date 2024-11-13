@@ -58,9 +58,9 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 		int lineEndH = carreHeight + getBoardBorder();
 		int lineEndV = carreWidth + getBoardBorder();
 
-		for (int idxRow = 0; idxRow < this.minesweeper.board.size(); idxRow++) {
-			for (int idxCol = 0; idxCol < this.minesweeper.board.get(idxRow).size(); idxCol++) {
-				Cell tmp = this.minesweeper.board.get(idxRow).get(idxCol);
+		for (int idxRow = 0; idxRow < this.minesweeper.getNbLines(); idxRow++) {
+			for (int idxCol = 0; idxCol < this.minesweeper.getNbColumns(); idxCol++) {
+				Cell tmp = this.minesweeper.getCell(idxRow, idxCol);
 //				drawCell(g, idxRow, idxCol);
 				drawCell(g, tmp);
 				tmp.setSelected(false);
@@ -78,7 +78,7 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 
 		g.setColor(Color.BLACK);
 		g.drawRect(getCellX(column), getCellY(line), getCellWidth(), getCellHeight());
-		Cell tmp = this.minesweeper.board.get(line).get(column);
+		Cell tmp = this.minesweeper.getCell(line, column);
 		g.setColor(tmp.getColor());
 		g.fillRect(getCellX(column), getCellY(line), getCellWidth(), getCellHeight());
 
@@ -147,9 +147,9 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 		return this.spaceBorder;
 	}
 
-	boolean isMine(int line, int column) {
-		return this.minesweeper.board.get(line).get(column).getIsMine();
-	}
+//	boolean isMine(int line, int column) {
+//		return this.minesweeper.isMine(line, column);
+//	}
 
 	public int getCellX(int column) {
 		return (getBoardBorder() + (column * getCellWidth()));
@@ -167,7 +167,7 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 		return this.spaceVert;
 	}
 
-	public boolean isOutOfBounds(int x, int y) {
+	public boolean isValidPositionPx(int x, int y) {
 		boolean condX = x > getBoardBorder() && x < (getBoardBorder() + (this.nbColumns * getCellWidth()));
 		boolean condY = y > getBoardBorder() && y < (getBoardBorder() + (this.nbRows * getCellHeight()));
 		if (condX && condY)

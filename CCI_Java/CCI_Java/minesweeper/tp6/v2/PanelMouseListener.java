@@ -2,6 +2,7 @@ package tp6.v2;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 public class PanelMouseListener extends MouseAdapter {
 	MinesweeperPanel panel;
 
@@ -14,35 +15,29 @@ public class PanelMouseListener extends MouseAdapter {
 
 //		System.out.println("Click Line = " + panel.minesweeper.selectedLine); 
 //		System.out.println("Click Column = " + panel.minesweeper.selectedColumn); 
-		int line = panel.getLine(e.getY());
-		int column = panel.getColumn(e.getX());
-		Cell tmpCell = panel.minesweeper.board.get(line).get(column);
-		tmpCell.reveal();
-		if (!tmpCell.getIsMine())
-			panel.minesweeper.increaseScore();;
-		
-//		panel.minesweeper.score--;
-		panel.repaint();
+
+		if (panel.isValidPositionPx(e.getX(), e.getY())) {
+			int line = panel.getLine(e.getY());
+			int column = panel.getColumn(e.getX());
+			panel.minesweeper.reveal(line, column);
+			if (!panel.minesweeper.isMine(line, column))
+				panel.minesweeper.increaseScore();
+			panel.repaint();
+		}
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		
+
 //		panel.minesweeper.selectedLine = panel.getLine(e.getY());
 //		panel.minesweeper.selectedColumn = panel.getColumn(e.getX());
-		
-		try {
+
+		if (panel.isValidPositionPx(e.getX(), e.getY())) {
 			int line = panel.getLine(e.getY());
 			int column = panel.getColumn(e.getX());
-			if (!panel.isOutOfBounds(line, column)) {
-				panel.minesweeper.board.get(line).get(column).setSelected(true);
-				panel.repaint();
-			}
-		} catch (Exception e2) {
-			// TODO: handle exception
-//			e2.printStackTrace();
+			panel.minesweeper.select(line, column);
+			panel.repaint();
 		}
 
-		
 	}
 }
