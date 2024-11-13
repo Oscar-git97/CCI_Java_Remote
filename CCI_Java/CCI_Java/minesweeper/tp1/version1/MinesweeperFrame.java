@@ -1,4 +1,4 @@
-package projet.tp1.version1;
+package tp1.version1;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
