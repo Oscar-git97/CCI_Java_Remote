@@ -16,7 +16,11 @@ public class PanelMouseListener extends MouseAdapter {
 //		System.out.println("Click Column = " + panel.minesweeper.selectedColumn); 
 		int line = panel.getLine(e.getY());
 		int column = panel.getColumn(e.getX());
-		panel.minesweeper.board.get(line).get(column).isRevealed = true;
+		Cell tmpCell = panel.minesweeper.board.get(line).get(column);
+		tmpCell.isRevealed = true;
+		if (!tmpCell.isMine)
+			panel.minesweeper.score--;
+		
 //		panel.minesweeper.score--;
 		panel.repaint();
 	}

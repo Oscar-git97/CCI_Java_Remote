@@ -103,7 +103,7 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 			g.setColor(Color.BLACK);
 			g.fillOval(getCellX(tmp.column) + (getCellWidth() / 2) - (sizeBomb / 2),
 					getCellX(tmp.row) + (getCellHeight() / 2) - (sizeBomb / 2), sizeBomb, sizeBomb);
-		}
+		} 
 	}
 
 	public int getColumn(int x) {
