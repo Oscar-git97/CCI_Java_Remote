@@ -29,23 +29,44 @@ public class Minesweeper {
 				this.board.get(row).add(cell);
 			}
 		}
+		setNeighbors();
 	}
 
-	public double getDifficulte() {
-		return difficulte;
+	private void setNeighbors() {
+		// TODO Auto-generated method stub
+		for (ArrayList<Cell> row : board)
+			for (Cell cell : row) {
+				cell.setNeighbors(countNeighbors(cell));
+			}
+
 	}
 
-	public void setDifficulte(double difficulte) {
-		this.difficulte = difficulte;
+	private int countNeighbors(Cell cell) {
+		int res = 0;
+		for (int row = cell.getRow() - 1; row <= (cell.getRow() + 1); row++)
+			for (int col = cell.getColumn() - 1; col <= (cell.getColumn() + 1); col++) {
+				if (isValidPositionLC(row, col) && !(row == cell.getRow()) && !(col == cell.getRow()))
+//					if (!(row == cell.getRow()) && !(col == cell.getRow()) && isMine(row, col)) 
+						res++;
+					
+			}
+		return res;
 	}
+//	public double getDifficulte() {
+//		return difficulte;
+//	}
+//
+//	public void setDifficulte(double difficulte) {
+//		this.difficulte = difficulte;
+//	}
 
-	public Color getColorSweeper() {
-		return colorSweeper;
-	}
-
-	public void setColorSweeper(Color color) {
-		this.colorSweeper = color;
-	}
+//	public Color getColorSweeper() {
+//		return colorSweeper;
+//	}
+//
+//	public void setColorSweeper(Color color) {
+//		this.colorSweeper = color;
+//	}
 
 	public int getNbColumns() {
 		return nbColumns;
@@ -65,21 +86,21 @@ public class Minesweeper {
 
 	public boolean isRevealed(int line, int column) {
 //		if (isValidPositionLC(line, column))
-			return board.get(line).get(column).getIsRevealed();
+		return board.get(line).get(column).getIsRevealed();
 //		return false;
 	}
 
 	public boolean isMine(int line, int column) {
 //		if (isValidPositionLC(line, column))
-			return board.get(line).get(column).getIsMine();
+		return board.get(line).get(column).getIsMine();
 //		return false;
 	}
 
 	public void reveal(int line, int column) {
 		boolean isIt = isMine(line, column);
-		if(isIt) {
-			for(ArrayList<Cell> row : board) {
-				for(Cell cell : row)
+		if (isIt) {
+			for (ArrayList<Cell> row : board) {
+				for (Cell cell : row)
 					cell.reveal();
 			}
 		}
@@ -94,9 +115,9 @@ public class Minesweeper {
 		board.get(line).get(column).setSelected(true);
 	}
 
-	public void deselect(int line, int column) {
-		board.get(line).get(column).setSelected(false);
-	}
+//	public void deselect(int line, int column) {
+//		board.get(line).get(column).setSelected(false);
+//	}
 
 	public boolean isValidPositionLC(int line, int column) {
 		boolean lineCheck = line <= nbLines && line > 0;

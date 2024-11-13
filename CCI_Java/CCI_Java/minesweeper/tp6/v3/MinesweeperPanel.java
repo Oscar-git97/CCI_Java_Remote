@@ -97,9 +97,6 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 		int yTmp = getCellY(tmp.getRow());
 		g.drawRect(xTmp, yTmp, getCellWidth(), getCellHeight());
 
-		
-		
-
 		if (tmp.isSelected) {
 			g.setColor(Color.RED);
 			g.fillRect(xTmp, yTmp, getCellWidth(), getCellHeight());
@@ -110,14 +107,17 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 			g.drawRect(xTmp, yTmp, getCellWidth(), getCellHeight());
 			int sizeBomb = 25;
 			g.setColor(Color.BLACK);
-			g.fillOval(xTmp + (getCellWidth() / 2) - (sizeBomb / 2),
-					yTmp + (getCellHeight() / 2) - (sizeBomb / 2), sizeBomb, sizeBomb);
+			g.fillOval(xTmp + (getCellWidth() / 2) - (sizeBomb / 2), yTmp + (getCellHeight() / 2) - (sizeBomb / 2),
+					sizeBomb, sizeBomb);
 		} else if (tmp.toString().equals("C")) {
 			g.setColor(Color.DARK_GRAY);
 			g.fillRect(xTmp, yTmp, getCellWidth(), getCellHeight());
 		} else {
 			g.setColor(Color.GRAY);
 			g.fillRect(xTmp, yTmp, getCellWidth(), getCellHeight());
+			g.setColor(Color.BLACK);
+			g.setFont(new Font("Ariel", Font.BOLD, 35));
+			g.drawString(String.valueOf(tmp.getNeighbors()), xTmp + 15, (yTmp + getCellHeight() - 10));
 		}
 	}
 

@@ -10,6 +10,7 @@ public class Cell {
 	private int row;
 	private int column;
 	private boolean active;
+	private int neighbors;
 
 	public Cell(boolean isMine, int row, int column) {
 		this.isRevealed = false;
@@ -53,6 +54,14 @@ public class Cell {
 	
 	public void setMine(boolean isMine) {
 		this.isMine = isMine;
+	}
+	
+	public void setNeighbors(int neighbors) {
+		this.neighbors = neighbors;
+	}
+	
+	public int getNeighbors() {
+		return neighbors;
 	}
 
 	public boolean getIsSelected() {
