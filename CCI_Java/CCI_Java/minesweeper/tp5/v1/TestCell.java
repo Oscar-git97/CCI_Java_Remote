@@ -1,6 +1,6 @@
 package tp5.v1;
 
-public class testCell {
+public class TestCell {
 
 	public static void main(String[] args) {
 		Cell cell0 = new Cell(false, 1, 1);
