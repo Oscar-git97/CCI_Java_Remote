@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 4 elements to &apos;CCI_Java/src/tp1&apos;&#x0D;&#x0A;- Original project: &apos;tp&apos;&#x0D;&#x0A;- Destination element: &apos;CCI_Java/src/tp1&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     EX03&#x0D;&#x0A;     EX02&#x0D;&#x0A;     EX01&#x0D;&#x0A;     EX04&#x0D;&#x0A;- Update references to refactored element" description="Move folders" destination="=CCI_Java/src&lt;tp1" element1="EX03" element2="EX02" element3="EX01" element4="EX04" files="0" flags="589830" folders="4" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1731429290340" units="0" version="1.0"/>
+</session>

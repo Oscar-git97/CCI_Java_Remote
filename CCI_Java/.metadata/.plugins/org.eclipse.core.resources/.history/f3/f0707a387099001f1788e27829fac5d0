@@ -1,0 +1,32 @@
+package tp4.ex01;
+
+public class TestNbDaysInMonth {
+
+	public static void main(String[] args) {
+		Date date1 = new Date(20, 1, 2000);
+		Date date2 = new Date(0,2,2001);
+		Date date3 = new Date(0,3,2024);
+		Date date4 = new Date(0,4,2004);
+		Date date5 = new Date(0,5,2004);
+		Date date6 = new Date(0,6,2004);
+		Date date7 = new Date(0,7,2004);
+		Date date8 = new Date(0,8,2004);
+		Date date9 = new Date(0,9,2004);
+		Date date10 = new Date(0,10,2004);
+		Date date11 = new Date(0,11,2004);
+		Date date12 = new Date(0,12,2004);
+		System.out.println(date1.nbDaysInMonth());
+		System.out.println(date2.nbDaysInMonth());
+		System.out.println(date3.nbDaysInMonth());
+		System.out.println(date4.nbDaysInMonth());
+		System.out.println(date5.nbDaysInMonth());
+		System.out.println(date6.nbDaysInMonth());
+		System.out.println(date7.nbDaysInMonth());
+		System.out.println(date8.nbDaysInMonth());
+		System.out.println(date9.nbDaysInMonth());
+		System.out.println(date10.nbDaysInMonth());
+		System.out.println(date11.nbDaysInMonth());
+		System.out.println(date12.nbDaysInMonth());
+	}
+
+}

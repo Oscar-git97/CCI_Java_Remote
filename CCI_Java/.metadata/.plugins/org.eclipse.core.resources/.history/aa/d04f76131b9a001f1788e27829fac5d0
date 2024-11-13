@@ -1,0 +1,21 @@
+package tp5.ex01;
+
+public class Holiday {
+	Date start;
+	Date end;
+	
+	public Holiday(Date start, Date end) {
+		this.start = start;
+		this.end = end;
+	}
+	
+	public Holiday() {
+		this.start = null;
+		this.end = null;
+	}
+	
+	public void print() {
+		System.out.println("Du " +start.print()+ " au " + end.toString());
+	}
+
+}

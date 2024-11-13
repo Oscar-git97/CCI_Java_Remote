@@ -1,0 +1,10 @@
+package tp7.exo2;
+
+public class TestPowOf10V1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

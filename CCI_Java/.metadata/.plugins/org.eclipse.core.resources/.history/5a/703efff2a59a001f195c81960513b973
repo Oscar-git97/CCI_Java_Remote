@@ -1,0 +1,8 @@
+package tp7.exo1;
+
+public class TestString1 {
+
+	String str1;
+	String str2;
+	
+}

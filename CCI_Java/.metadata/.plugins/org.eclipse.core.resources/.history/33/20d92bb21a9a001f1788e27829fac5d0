@@ -1,0 +1,11 @@
+package tp5.ex01;
+
+public class TestHolidayV1 {
+
+	public static void main(String[] args) {
+		System.out.println("Saisie d ' une période");
+		System.out.println("Taper la date de d é but ( jour mois année) :");
+		
+	}
+
+}

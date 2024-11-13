@@ -1,0 +1,8 @@
+package tp7.exo2;
+
+public class Calculator {
+	
+	static public int powOf10(int n) {
+		return (int)Math.pow(10, n);
+	}
+}

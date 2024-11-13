@@ -1,0 +1,67 @@
+package tp5.ex01;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Employee {
+
+	int id;
+	ArrayList<Holiday> holidays;
+	
+	public Employee(int id) {
+		this.id = id;
+	}
+	
+//	public void addHoliday(Holiday holiday) {
+//		holidays.add(holiday);
+//	}
+	
+	public void addHoliday(Scanner scanner) {
+		System.out.println("à partir de : ");
+		System.out.println("le jour : ");
+		int dayStart = scanner.nextInt();
+		System.out.println("le mois : ");
+		int monthStart = scanner.nextInt();
+		System.out.println("l'année : ");
+		int yearStart = scanner.nextInt();
+		
+		Date tempDate1 = new Date(dayStart, monthStart, yearStart);
+		
+		System.out.println("jusque à : ");
+		System.out.println("le jour : ");
+		int dayEnd = scanner.nextInt();
+		System.out.println("le mois : ");
+		int monthEnd= scanner.nextInt();
+		System.out.println("l'année : ");
+		int yearEnd = scanner.nextInt();
+		
+		Date tempDate2 = new Date(dayEnd, monthEnd, yearEnd);
+		
+		holidays.add(new Holiday(tempDate1, tempDate2));
+		
+	}
+	
+	public void displayHolidays() {
+		
+		for (int idx = 0; idx < holidays.size(); idx++) {
+			System.out.println("Holidays " + idx + " :");
+			System.out.print("start : ");
+			holidays.get(idx).start.print();
+			System.out.print("fin : ");
+			holidays.get(idx).end.print();
+		}
+	}
+	
+	public void checkIfOnHoliday(Scanner scanner) {
+		System.out.println("Donnez moi une date s.v.p. : ");
+		System.out.println("le jour : ");
+		int day = scanner.nextInt();
+		System.out.println("le mois : ");
+		int month= scanner.nextInt();
+		System.out.println("l'année : ");
+		int year= scanner.nextInt();
+		
+		Date tempDate = new Date(day, month, year);
+	}
+	
+}

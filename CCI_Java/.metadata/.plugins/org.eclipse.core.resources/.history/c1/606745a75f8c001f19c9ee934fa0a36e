@@ -1,0 +1,33 @@
+package tp5.ex01;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Employee {
+
+	int id;
+	ArrayList<Holiday> holidays;
+	
+	public Employee(int id) {
+		this.id = id;
+	}
+	
+//	public void addHoliday(Holiday holiday) {
+//		holidays.add(holiday);
+//	}
+	
+	public void addHoliday(Scanner scanner) {
+		
+	}
+	
+	public void displayHolidays() {
+		for (int idx = 0; idx < holidays.size(); idx++) {
+			holidays.get(idx);
+		}
+	}
+	
+	public void checkIfOnHoliday(Scanner scanner) {
+		
+	}
+	
+}

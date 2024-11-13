@@ -1,0 +1,48 @@
+1729500786546	Rename package 'tp4.ex01'
+1729500815962	Rename package 'tp4.ex02'
+1729500847547	Rename package 'tp4.ex0111'
+1729503244786	Move compilation unit
+1729503262659	Rename type 'Ex01'
+1729503285074	Move compilation unit
+1729503314761	Move compilation unit
+1729503318988	Move compilation unit
+1729503379654	Rename type 'Ex02'
+1729503401109	Rename type 'Ex03'
+1729503426114	Rename type 'Ex04'
+1729503671647	Copy package
+1729503677076	Copy package
+1729503682313	Copy package
+1729503687504	Move compilation unit
+1729503691980	Move compilation unit
+1729503694959	Move compilation unit
+1729503800371	Move compilation unit
+1729503806615	Delete element
+1729503835141	Rename type 'EX01'
+1729503857177	Rename type 'EX02'
+1729503904582	Rename type 'EX03'
+1729503969054	Rename type 'EX042'
+1729503988398	Rename type 'EX04v2'
+1729504087734	Rename package 'tp2.EX01'
+1729504096136	Rename package 'tp2.EX02'
+1729504103441	Rename package 'tp2.EX03'
+1729504176700	Rename package 'tp2.EX04'
+1729504423469	Rename package 'tp3.EX01'
+1729504435860	Rename package 'tp3.EX02'
+1729504442631	Rename package 'tp3.EX03'
+1729504451355	Rename package 'tp3.EX04'
+1729504459986	Rename package 'tp3.EX05'
+1729504467841	Rename package 'tp3.EX06'
+1729511724651	Copy compilation units
+1729512442830	Rename method 'isSelected'
+1729761422159	Rename field 'result'
+1729773615923	Rename package 'projet.tp1'
+1729773820422	Copy package
+1729774595176	Copy package
+1729775337104	Copy package
+1729776038811	Copy package
+1729891721095	Copy package
+1729892299408	Delete element
+1729892311184	Copy package
+1729893685685	Rename field 'color'
+1729893701049	Rename method 'getColor'
+1729893714171	Rename method 'setColor'
