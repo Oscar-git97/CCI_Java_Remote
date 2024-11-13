@@ -1,4 +1,4 @@
-package tp5.minesweeper.freestyle;
+package tp5.v1;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -61,7 +61,8 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 		for (int idxRow = 0; idxRow < this.minesweeper.board.size(); idxRow++) {
 			for (int idxCol = 0; idxCol < this.minesweeper.board.get(idxRow).size(); idxCol++) {
 				Cell tmp = this.minesweeper.board.get(idxRow).get(idxCol);
-				drawCell(g, idxRow, idxCol);
+//				drawCell(g, idxRow, idxCol);
+				drawCell(g, tmp);
 				tmp.setSelected(false);
 			}
 		}

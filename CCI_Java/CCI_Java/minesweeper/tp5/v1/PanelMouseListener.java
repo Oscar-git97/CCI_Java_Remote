@@ -1,4 +1,4 @@
-package tp5.minesweeper.freestyle;
+package tp5.v1;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

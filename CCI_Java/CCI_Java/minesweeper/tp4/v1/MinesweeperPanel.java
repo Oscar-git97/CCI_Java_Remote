@@ -1,4 +1,4 @@
-package tp5.minesweeper.freestyle;
+package tp4.v1;
 
 import java.awt.Color;
 import java.awt.Dimension;

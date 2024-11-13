@@ -1,13 +1,16 @@
 package tp2.v1;
+
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
-
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class MinesweeperPanel extends JPanel {
 	Minesweeper minesweeper;
+	int spaceHor;
+	int spaceVert;
 
 	public MinesweeperPanel(Minesweeper minesweeper) {
 		this.minesweeper = minesweeper;
@@ -16,31 +19,50 @@ public class MinesweeperPanel extends JPanel {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		
-		int cellWidth = getWidth();
-		int cellHeight = getHeight();
-		int nbLines = 2;
-		int nbColumns = 3;
-		int line = 1;
-		int column = 2;
-		int cellX = line * cellWidth;
-		int cellY = column * cellHeight;
-		
 		super.paintComponent(g);
 
-		g.setColor(Color.RED);
-		g.drawLine(0, 0, getWidth(), getHeight());
+		// grand rect
 
-		g.setColor(Color.BLUE);
-		g.drawLine(500, 0, getWidth() / 2, getHeight() / 2);
-		
+		int spaceBorder = 20;
+		int nbColumns = this.minesweeper.nbColumns;
+		int nbRows = this.minesweeper.nbLines;
+
+		int carreWidth = (getWidth() - (spaceBorder * 2)) - ((getWidth() - (spaceBorder * 2)) % nbColumns);
+		int carreHeight = (getHeight() - (spaceBorder * 2)) - ((getHeight() - (spaceBorder * 2)) % nbRows);
+
+		this.spaceHor = carreWidth / nbColumns;
+		this.spaceVert = carreHeight / nbRows;
+
+		int lineEndH = carreHeight + spaceBorder;
+		int lineEndV = carreWidth + spaceBorder;
+
+		// creating collumns
+		int posH = spaceBorder;
 		g.setColor(Color.BLACK);
-		g.drawRect(100, 200, 30, 50);
-		
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(200, 200, 30, 30);
-		
-		g.setColor(Color.GRAY);
-		g.drawRect(cellX, cellY, cellWidth, cellHeight);
+		g.drawLine(spaceBorder, spaceBorder, spaceBorder, lineEndH);
+
+		for (int idx = 1; idx <= nbColumns; idx++) {
+			posH = (idx * spaceHor) + spaceBorder;
+			g.setColor(Color.BLACK);
+			g.drawLine(posH, spaceBorder, posH, lineEndH);
+		}
+
+		// creating rows
+		int posV = spaceBorder;
+		g.setColor(Color.BLACK);
+		g.drawLine(spaceBorder, spaceBorder, lineEndV, spaceBorder);
+
+		for (int idx = 1; idx <= nbRows; idx++) {
+			posV = (idx * spaceVert) + spaceBorder;
+			g.setColor(Color.BLACK);
+			g.drawLine(spaceBorder, posV, lineEndV, posV);
+		}
+
+		// show score
+
+		g.setColor(Color.darkGray);
+		g.setFont(new Font("Ariel", Font.BOLD, spaceBorder - 3));
+		g.drawString("Score : " + this.minesweeper.score, (getWidth() / 2) - 40, (spaceBorder - 3));
+
 	}
 }
