@@ -3,6 +3,7 @@ package tp6.v3;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.util.Scanner;
@@ -58,8 +59,8 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 		int lineEndH = carreHeight + getBoardBorder();
 		int lineEndV = carreWidth + getBoardBorder();
 
-		for (int idxRow = 0; idxRow < this.minesweeper.getNbLines(); idxRow++) {
-			for (int idxCol = 0; idxCol < this.minesweeper.getNbColumns(); idxCol++) {
+		for (int idxRow = 1; idxRow <= this.minesweeper.getNbLines(); idxRow++) {
+			for (int idxCol = 1; idxCol <= this.minesweeper.getNbColumns(); idxCol++) {
 				Cell tmp = this.minesweeper.getCell(idxRow, idxCol);
 //				drawCell(g, idxRow, idxCol);
 				drawCell(g, tmp);
@@ -72,6 +73,46 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 		g.setFont(new Font("Ariel", Font.BOLD, spaceBorder - 3));
 		g.drawString("Score : " + this.minesweeper.getScore(), (getWidth() / 2) - 40, (spaceBorder - 3));
 
+		if (this.minesweeper.isGameOver())
+			drawGameOver(g);
+		else if (this.minesweeper.isWin())
+			drawWin(g);
+	}
+
+	private void drawWin(Graphics g) {
+		int fontSize = (getHeight() + getWidth()) / (2 * 3 * 2);
+		Font font = new Font("Ariel", Font.BOLD, fontSize);
+		FontMetrics metrics = g.getFontMetrics(font);
+
+		g.setColor(Color.CYAN);
+		g.fillRect(0, fontSize * 2, getWidth(), fontSize * 2);// fontSize * 2
+		String gg = "GG, U WIN!";
+		int xGame = (getWidth() - metrics.stringWidth(gg)) / 2;
+		String score = "Score : " + this.minesweeper.getScore();
+		int xScore = (getWidth() - metrics.stringWidth(score)) / 2;
+		g.setColor(Color.BLACK);
+		g.setFont(font);
+		g.drawString(gg, xGame, fontSize * 3);
+		g.drawString(score, xScore, (fontSize * 4) - getHeight() / 22);
+
+	}
+
+	private void drawGameOver(Graphics g) {
+
+		int fontSize = (getHeight() + getWidth()) / (2 * 3 * 2);
+		Font font = new Font("Ariel", Font.BOLD, fontSize);
+		FontMetrics metrics = g.getFontMetrics(font);
+
+		g.setColor(Color.CYAN);
+		g.fillRect(0, fontSize * 2, getWidth(), fontSize * 2);// fontSize * 2
+		String gg = "GAME OVER!";
+		int xGame = (getWidth() - metrics.stringWidth(gg)) / 2;
+		String score = "Score : " + this.minesweeper.getScore();
+		int xScore = (getWidth() - metrics.stringWidth(score)) / 2;
+		g.setColor(Color.BLACK);
+		g.setFont(font);
+		g.drawString(gg, xGame, fontSize * 3);
+		g.drawString(score, xScore, (fontSize * 4) - getHeight() / 22);
 	}
 
 	public void drawCell(Graphics g, int line, int column) {
@@ -97,7 +138,16 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 		int yTmp = getCellY(tmp.getRow());
 		g.drawRect(xTmp, yTmp, getCellWidth(), getCellHeight());
 
-		if (tmp.isSelected) {
+		if (tmp.isFlagged()) {
+			g.setColor(Color.DARK_GRAY);
+			g.fillRect(xTmp, yTmp, getCellWidth(), getCellHeight());
+			g.setColor(Color.WHITE);
+			g.drawRect(xTmp, yTmp, getCellWidth(), getCellHeight());
+			int sizeBomb = (getCellWidth() + getCellHeight()) / 5;
+			g.setColor(Color.GREEN);
+			g.fillOval(xTmp + (getCellWidth() / 2) - (sizeBomb / 2), yTmp + (getCellHeight() / 2) - (sizeBomb / 2),
+					sizeBomb, sizeBomb);
+		} else if (tmp.isSelected()) {
 			g.setColor(Color.RED);
 			g.fillRect(xTmp, yTmp, getCellWidth(), getCellHeight());
 		} else if (tmp.toString().equals("B")) {
@@ -105,7 +155,7 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 			g.fillRect(xTmp, yTmp, getCellWidth(), getCellHeight());
 			g.setColor(Color.WHITE);
 			g.drawRect(xTmp, yTmp, getCellWidth(), getCellHeight());
-			int sizeBomb = 25;
+			int sizeBomb = (getCellWidth() + getCellHeight()) / 5;
 			g.setColor(Color.BLACK);
 			g.fillOval(xTmp + (getCellWidth() / 2) - (sizeBomb / 2), yTmp + (getCellHeight() / 2) - (sizeBomb / 2),
 					sizeBomb, sizeBomb);
@@ -116,47 +166,33 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 			g.setColor(Color.GRAY);
 			g.fillRect(xTmp, yTmp, getCellWidth(), getCellHeight());
 			g.setColor(Color.BLACK);
-			g.setFont(new Font("Ariel", Font.BOLD, 35));
+			g.setFont(new Font("Ariel", Font.BOLD, getCellHeight() / 2));
 			g.drawString(String.valueOf(tmp.getNeighbors()), xTmp + 15, (yTmp + getCellHeight() - 10));
 		}
 	}
 
 	public int getColumn(int x) {
-		boolean condX = x > getBoardBorder() && x < (getBoardBorder() + (this.nbColumns * getCellWidth()));
-		if (condX) {
-			int posCarre = x - getBoardBorder();
-			this.selCol = posCarre / getCellWidth();
-			return this.selCol;
-		}
-		return -1;
+		int posCarre = x - getBoardBorder();
+		this.selCol = posCarre / getCellWidth();
+		return this.selCol + 1;
 	}
 
 	public int getLine(int y) {
-
-		boolean condY = y > getBoardBorder() && y < (getBoardBorder() + (this.nbRows * getCellHeight()));
-		if (condY) {
-			int posCarre = y - getBoardBorder();
-			this.selLine = posCarre / spaceVert;
-			return this.selLine;
-		}
-		return -1;
-
+		int posCarre = y - getBoardBorder();
+		this.selLine = posCarre / spaceVert;
+		return this.selLine + 1;
 	}
 
 	public int getBoardBorder() {
 		return this.spaceBorder;
 	}
 
-//	boolean isMine(int line, int column) {
-//		return this.minesweeper.isMine(line, column);
-//	}
-
 	public int getCellX(int column) {
-		return (getBoardBorder() + (column * getCellWidth()));
+		return (getBoardBorder() + ((column - 1) * getCellWidth()));
 	}
 
 	public int getCellY(int line) {
-		return (getBoardBorder() + (line * getCellHeight()));
+		return (getBoardBorder() + ((line - 1) * getCellHeight()));
 	}
 
 	public int getCellWidth() {
@@ -175,9 +211,5 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 		return false;
 	}
 
-	@Override
-	public void drawMinesweeper(Graphics g) {
-
-	}
 
 }
