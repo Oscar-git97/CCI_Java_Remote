@@ -47,6 +47,8 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
+		if (!this.minesweeper.isOver())
+			this.minesweeper.updateScore();
 		this.nbColumns = this.minesweeper.getNbColumns();
 		this.nbRows = this.minesweeper.getNbLines();
 
@@ -115,6 +117,7 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 		g.drawString(score, xScore, (fontSize * 4) - getHeight() / 22);
 	}
 
+	@Deprecated
 	public void drawCell(Graphics g, int line, int column) {
 
 		g.setColor(Color.BLACK);
@@ -210,6 +213,5 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 			return true;
 		return false;
 	}
-
 
 }

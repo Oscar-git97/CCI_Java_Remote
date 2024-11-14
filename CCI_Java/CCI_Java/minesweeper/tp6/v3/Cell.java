@@ -11,7 +11,7 @@ public class Cell {
 	private int row;
 	private int column;
 	private boolean active;
-	private int nbNeighbors;
+	private int nbNeighboringBombes;
 	private boolean isFlagged;
 	private ArrayList<Cell> neighbors;
 
@@ -24,7 +24,7 @@ public class Cell {
 		this.column = column;
 		this.active = true;
 		this.isFlagged = false;
-		this.nbNeighbors = 0;
+		this.nbNeighboringBombes = 0;
 		this.neighbors = new ArrayList<Cell>();
 	}
 
@@ -41,7 +41,7 @@ public class Cell {
 	public void addNeighbor(Cell cell) {
 		neighbors.add(cell);
 		if (cell.isMine)
-			nbNeighbors++;
+			nbNeighboringBombes++;
 	}
 
 	public void setSelected(boolean isSelected) {
@@ -54,10 +54,17 @@ public class Cell {
 
 		if (status && !this.isMine)
 			this.color = Color.DARK_GRAY;
+		
 	}
 
 	public void reveal() {
 		this.isRevealed = true;
+		if(nbNeighboringBombes == 0) {
+			for(Cell neighbor : neighbors) {
+				if(!neighbor.isFlagged && !neighbor.isMine && !neighbor.isRevealed)
+					neighbor.reveal();
+			}
+		}
 	}
 
 	public boolean getIsRevealed() {
@@ -69,11 +76,11 @@ public class Cell {
 	}
 
 	public void setNeighbors(int neighbors) {
-		this.nbNeighbors = neighbors;
+		this.nbNeighboringBombes = neighbors;
 	}
 
 	public int getNeighbors() {
-		return nbNeighbors;
+		return nbNeighboringBombes;
 	}
 
 	public boolean getIsSelected() {

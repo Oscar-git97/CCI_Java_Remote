@@ -21,9 +21,11 @@ public class Minesweeper {
 	private ArrayList<ArrayList<Cell>> board;
 
 	public Minesweeper() {
-		this.nbColumns = 3;
-		this.nbLines = 3;
-		this.difficulte = 0.1;
+		this.nbColumns = 15;
+		this.nbLines = 15;
+//		this.nbColumns = 3;
+//		this.nbLines = 3;
+		this.difficulte = 0.2;
 		this.score = 0;
 		this.board = new ArrayList<ArrayList<Cell>>();
 		this.gameOver = false;
@@ -52,7 +54,7 @@ public class Minesweeper {
 			for (Cell cell : row) {
 				addAllNeighbors(cell);
 			}
-
+		System.out.println("neighbors set");
 	}
 
 	private void addAllNeighbors(Cell cell) {
@@ -156,8 +158,20 @@ public class Minesweeper {
 		return gameOver || gameWin;
 	}
 
-	public boolean isWin() {
+	public boolean isWin() {	
 		return gameWin;
+	}
+	
+	public void updateScore() {
+		int nbRevealedTmp = 0;
+		for (ArrayList<Cell> row : board)
+			for (Cell cell : row)
+				if(cell.isRevealed())
+					nbRevealedTmp++;
+		nbRevealed = nbRevealedTmp;
+		score = nbRevealed;
+		if(nbRevealed == nbBlanks)
+			gameWin = true;
 	}
 
 	public void flag(int line, int column) {
