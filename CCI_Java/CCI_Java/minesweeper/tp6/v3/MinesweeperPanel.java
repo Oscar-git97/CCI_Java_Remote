@@ -168,9 +168,11 @@ public class MinesweeperPanel extends JPanel implements MinesweeperPanelable {
 		} else {
 			g.setColor(Color.GRAY);
 			g.fillRect(xTmp, yTmp, getCellWidth(), getCellHeight());
-			g.setColor(Color.BLACK);
-			g.setFont(new Font("Ariel", Font.BOLD, getCellHeight() / 2));
-			g.drawString(String.valueOf(tmp.getNeighbors()), xTmp + 15, (yTmp + getCellHeight() - 10));
+			if (tmp.getNeighbors() != 0) {
+				g.setColor(Color.BLACK);
+				g.setFont(new Font("Ariel", Font.BOLD, getCellHeight() / 2));
+				g.drawString(String.valueOf(tmp.getNeighbors()), xTmp + 15, (yTmp + getCellHeight() - 10));
+			}
 		}
 	}
 

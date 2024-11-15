@@ -6,7 +6,6 @@
     <fullyQualifiedTypeName name="java.awt.Graphics"/>
     <fullyQualifiedTypeName name="tp4.minesweeperVersion3oneByeOne.MinesweeperPanelable"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="javax.swing.JMenuBar"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="javax.swing.JMenu"/>
@@ -15,9 +14,13 @@
     <fullyQualifiedTypeName name="td6.Student"/>
     <fullyQualifiedTypeName name="td6.SubjectResult"/>
     <fullyQualifiedTypeName name="tp6.ex01.Contribution"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="tp6.ex01.TeamMember"/>
     <fullyQualifiedTypeName name="tp6.ex01.Team"/>
     <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
+    <fullyQualifiedTypeName name="java.awt.FontMetrics"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="javax.swing.SwingUtilities"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.lang.Deprecated"/>
 </qualifiedTypeNameHistroy>
