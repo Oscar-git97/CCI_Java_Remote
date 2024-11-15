@@ -49,7 +49,6 @@ public class Minesweeper {
 	}
 
 	private void setNeighbors() {
-		// TODO Auto-generated method stub
 		for (ArrayList<Cell> row : board)
 			for (Cell cell : row) {
 				addAllNeighbors(cell);
