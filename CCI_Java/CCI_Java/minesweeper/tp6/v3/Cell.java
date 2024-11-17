@@ -7,7 +7,7 @@ public class Cell {
 	private boolean isRevealed;
 	private boolean isMine;
 	private boolean isSelected;
-	Color color;
+//	Color color;
 	private int row;
 	private int column;
 	private boolean active;
@@ -18,7 +18,7 @@ public class Cell {
 	public Cell(boolean isMine, int row, int column) {
 		this.isRevealed = false;
 		this.isSelected = false;
-		this.color = Color.GRAY;
+//		this.color = Color.GRAY;
 		this.isMine = isMine;
 		this.row = row;
 		this.column = column;
@@ -28,15 +28,15 @@ public class Cell {
 		this.neighbors = new ArrayList<Cell>();
 	}
 
-	private void refreshColor() {
-
-		if (this.isSelected)
-			this.color = Color.RED;
-		else if (!this.isRevealed)
-			this.color = Color.DARK_GRAY;
-		else if (!this.isRevealed)
-			this.color = Color.lightGray;
-	}
+//	private void refreshColor() {
+//
+//		if (this.isSelected)
+//			this.color = Color.RED;
+//		else if (!this.isRevealed)
+//			this.color = Color.DARK_GRAY;
+//		else if (!this.isRevealed)
+//			this.color = Color.lightGray;
+//	}
 
 	public void addNeighbor(Cell cell) {
 		neighbors.add(cell);
@@ -52,8 +52,8 @@ public class Cell {
 		this.isRevealed = status;
 		this.active = false;
 
-		if (status && !this.isMine)
-			this.color = Color.DARK_GRAY;
+//		if (status && !this.isMine)
+//			this.color = Color.DARK_GRAY;
 		
 	}
 
@@ -87,15 +87,15 @@ public class Cell {
 		return isSelected;
 	}
 
-	public Color getColor() {
-		if (!isRevealed)
-			refreshColor();
-		return color;
-	}
-
-	public void setColor(Color color) {
-		this.color = color;
-	}
+//	public Color getColor() {
+//		if (!isRevealed)
+//			refreshColor();
+//		return color;
+//	}
+//
+//	public void setColor(Color color) {
+//		this.color = color;
+//	}
 
 	public boolean isRevealed() {
 		return isRevealed;

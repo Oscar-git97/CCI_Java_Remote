@@ -15,28 +15,34 @@ public class Minesweeper {
 	private int nbBlanks;
 	private int nbRevealed;
 
-	double difficulte;
+	double difficulty;
 	Color colorSweeper = Color.RED;
 
 	private ArrayList<ArrayList<Cell>> board;
 
 	public Minesweeper() {
+		resetGame(0.25);
+
+	}
+
+	public void resetGame(double difficulty) {
 		this.nbColumns = 15;
 		this.nbLines = 15;
 //		this.nbColumns = 3;
 //		this.nbLines = 3;
-		this.difficulte = 0.2;
+		this.difficulty = difficulty;
 		this.score = 0;
-		this.board = new ArrayList<ArrayList<Cell>>();
+
 		this.gameOver = false;
 		this.gameWin = false;
 		this.nbMines = 0;
 		this.nbRevealed = 0;
 
+		this.board = new ArrayList<ArrayList<Cell>>();
 		for (int row = 0; row < this.nbLines; row++) {
 			this.board.add(new ArrayList<Cell>());
 			for (int column = 0; column < this.nbColumns; column++) {
-				boolean isMine = ((int) (Math.random() + difficulte)) == 1;
+				boolean isMine = ((int) (Math.random() + difficulty)) == 1;
 				Cell cell = new Cell(isMine, row + 1, column + 1);
 				this.board.get(row).add(cell);
 				if (isMine)
@@ -53,7 +59,6 @@ public class Minesweeper {
 			for (Cell cell : row) {
 				addAllNeighbors(cell);
 			}
-		System.out.println("neighbors set");
 	}
 
 	private void addAllNeighbors(Cell cell) {
@@ -157,19 +162,19 @@ public class Minesweeper {
 		return gameOver || gameWin;
 	}
 
-	public boolean isWin() {	
+	public boolean isWin() {
 		return gameWin;
 	}
-	
+
 	public void updateScore() {
 		int nbRevealedTmp = 0;
 		for (ArrayList<Cell> row : board)
 			for (Cell cell : row)
-				if(cell.isRevealed())
+				if (cell.isRevealed())
 					nbRevealedTmp++;
 		nbRevealed = nbRevealedTmp;
 		score = nbRevealed;
-		if(nbRevealed == nbBlanks)
+		if (nbRevealed == nbBlanks)
 			gameWin = true;
 	}
 
@@ -185,6 +190,10 @@ public class Minesweeper {
 
 	public boolean isFlagged(int line, int column) {
 		return getCell(line, column).isFlagged();
+	}
+
+	public double getDifficulty() {
+		return this.difficulty;
 	}
 
 }
