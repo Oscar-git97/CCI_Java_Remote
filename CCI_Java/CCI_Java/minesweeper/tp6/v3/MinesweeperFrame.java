@@ -1,5 +1,7 @@
 package tp6.v3;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -24,35 +26,43 @@ public class MinesweeperFrame extends JFrame {
 		
 		
 		menu = new JMenu("menu");	
-		size = new JMenu("size in pixel");
-		difficulte = new JMenu("Mines/no mines");
-		color = new JMenu("Color");
+//		size = new JMenu("size in pixel");
+		difficulte = new JMenu("difficulty");
+		color = new JMenu("color");
 		
-		size1 = new JMenuItem("500");
-		size2 = new JMenuItem("700");
-		size3 = new JMenuItem("1000");
+//		size1 = new JMenuItem("500");
+//		size2 = new JMenuItem("700");
+//		size3 = new JMenuItem("1000");
+//		
+//		size.add(size1);
+//		size.add(size2);
+//		size.add(size3);
 		
-		size.add(size1);
-		size.add(size2);
-		size.add(size3);
+		diff1 = new JMenuItem("20% bombs");
+		diff1.addActionListener(e -> this.minesweeper.resetGame(0.20));
+		diff2 = new JMenuItem("35% bombs");
+		diff2.addActionListener(e -> this.minesweeper.resetGame(0.35));
+		diff3 = new JMenuItem("50% bombs");
+		diff3.addActionListener(e -> this.minesweeper.resetGame(0.50));
 		
-		diff1 = new JMenuItem("50/50");
-		diff2 = new JMenuItem("25/75");
-		diff3 = new JMenuItem("75/25");
+		
 		
 		difficulte.add(diff1);
 		difficulte.add(diff2);
 		difficulte.add(diff3);
 		
 		color1 = new JMenuItem("red");
+		color1.addActionListener(e -> this.minesweeperPanel.setColorSweeper(Color.RED));
 		color2 = new JMenuItem("blue");
-		color3 = new JMenuItem("black");
+		color2.addActionListener(e -> this.minesweeperPanel.setColorSweeper(Color.BLUE));
+		color3 = new JMenuItem("yellow");
+		color3.addActionListener(e -> this.minesweeperPanel.setColorSweeper(Color.YELLOW));
 		
 		color.add(color1);
 		color.add(color2);
 		color.add(color3);
 		
-		menu.add(size);
+//		menu.add(size);
 		menu.add(difficulte);
 		menu.add(color);
 		
